@@ -1,0 +1,81 @@
+body {
+	background: black;
+	color: white;
+	font-family: sans-serif;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+a {
+	color: yellow;
+}
+
+h1 {
+	font-size: 40px;
+	/* width: 40px; */
+	position: absolute;
+	background: black;
+	/* line-height: 1.5; */
+}
+
+.component {
+	margin-left: 20px;
+	/* padding-top: 20px; */
+	padding-left: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	min-height: 40px;
+	/* border-left: 1px solid greenyellow; */
+}
+
+.component h1 {
+	/* position: relative; */
+	margin-top: 0;
+}
+
+/* last p element in component has no margin bottom */
+.component :last-child {
+	margin-bottom: 0;
+}
+
+.component :first-child {
+	margin-top: 0;
+}
+
+.component:not(:last-child) {
+	border-left: greenyellow 1px solid;
+}
+
+.component:last-child>h1::before {
+	content: '';
+	position: absolute;
+	left: -20px;
+	top: -10px;
+	height: calc(50% + 10px);
+	width: 1px;
+	background-color: greenyellow;
+}
+
+.component h1::after {
+	content: '';
+	position: absolute;
+	left: -20px;
+	top: 50%;
+	height: 1px;
+	width: 10px;
+	background-color: greenyellow;
+}
+
+.entry {
+	margin-left: 20px;
+	border-left: greenyellow 1px solid;
+	padding-left: 40px;
+	min-height: 100px;
+	padding-top: 10px;
+}
+
+/* Target the last .entry in a .component, only if it's not followed by another .component */
+.component>.entry:last-child {
+	border-left: none;
+	/* Styles to apply */
+}
