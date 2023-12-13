@@ -1,9 +1,6 @@
 name: Generate HTML from JSON
 
-on:
-  push:
-    paths:
-      - 'combined.json'
+on: push
 
 jobs:
   build:
