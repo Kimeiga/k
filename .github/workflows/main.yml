@@ -9,20 +9,21 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
+        with:
+          ref: gh-pages # Checkout the gh-pages branch
 
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
-          go-version: '^1.16' # Specify the Go version
+          go-version: '^1.16'
 
       - name: Generate HTML files
-        run: |
-          go run generate2.go # Replace with your Go script command
+        run: go run generate2.go # Replace with your Go script command
 
       - name: Commit and push if changed
         run: |
           git config --global user.name 'Hakan Alpay'
           git config --global user.email 'hak7alp@gmail.com'
           git add .
-          git commit -m "Auto-update HTML files" || exit 0   # This will exit with 0 if there's nothing to commit
-          git push
+          git commit -m "Auto-update HTML files" || exit 0
+          git push origin gh-pages # Push changes to gh-pages branch
