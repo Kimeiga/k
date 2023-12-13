@@ -1,0 +1,31 @@
+name: Generate HTML from JSON
+
+on:
+  push:
+    paths:
+      - 'combined.json'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '^1.16' # Specify the Go version
+
+      - name: Generate HTML files
+        run: |
+          go run generate2.go # Replace with your Go script command
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name 'Hakan Alpay'
+          git config --global user.email 'hak7alp@gmail.com'
+          git add .
+          git commit -m "Auto-update HTML files" || exit 0   # This will exit with 0 if there's nothing to commit
+          git push
