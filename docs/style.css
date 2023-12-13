@@ -1,0 +1,156 @@
+body {
+	background: black;
+	color: white;
+	font-family: sans-serif;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+a {
+	color: yellow;
+}
+
+h1 {
+	font-size: 40px;
+	/* width: 40px; */
+	position: absolute;
+	background: black;
+	/* line-height: 1.5; */
+}
+
+.component {
+	margin-left: 20px;
+	/* padding-top: 20px; */
+	padding-left: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	min-height: 40px;
+	/* border-left: 1px solid greenyellow; */
+}
+
+.component h1 {
+	/* position: relative; */
+	margin-top: 0;
+}
+
+/* last p element in component has no margin bottom */
+.component :last-child {
+	margin-bottom: 0;
+}
+
+.component :first-child {
+	margin-top: 0;
+}
+
+.component:not(:last-child) {
+	border-left: greenyellow 1px solid;
+}
+
+.component:last-child>h1::before {
+	content: '';
+	position: absolute;
+	left: -20px;
+	top: -10px;
+	height: calc(50% + 10px);
+	width: 1px;
+	background-color: greenyellow;
+}
+
+.component h1::after {
+	content: '';
+	position: absolute;
+	left: -20px;
+	top: 50%;
+	height: 1px;
+	width: 10px;
+	background-color: greenyellow;
+}
+
+.entry {
+	margin-left: 20px;
+	border-left: greenyellow 1px solid;
+	padding-left: 40px;
+	min-height: 100px;
+	padding-top: 10px;
+}
+
+/* Target the last .entry in a .component, only if it's not followed by another .component */
+.component>.entry:last-child {
+	border-left: none;
+	/* Styles to apply */
+}
+
+.partOfSpeech {
+	list-style: none;
+	color: grey;
+}
+
+ul {
+	padding-inline-start: 1rem;
+}
+
+.jmdictEntries {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	/* adjust this value as needed */
+}
+
+.jmdictEntry {
+	flex-basis: calc(50% - 10px);
+	/* adjust the subtraction value to match the gap */
+	break-inside: avoid;
+}
+
+.cedictEntries {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	/* adjust this value as needed */
+}
+
+.cedictEntry {
+	flex-basis: calc(50% - 10px);
+	/* adjust the subtraction value to match the gap */
+	break-inside: avoid;
+}
+
+.cedictEntries+.jmdictEntries {
+	margin-top: 1rem;
+}
+
+/* when screen is mobile make it single column */
+@media (max-width: 600px) {
+	/* .jmdictEntries {
+		flex-wrap: nowrap;
+	} */
+
+	.jmdictEntry {
+		flex-basis: 100%;
+	}
+
+	.cedictEntry {
+		flex-basis: 100%;
+	}
+}
+
+/* flex-basis: calc(50% - 10px); */
+
+
+h2 {
+	margin-bottom: 0.5rem;
+}
+
+ul {
+	margin-top: 0;
+}
+
+
+textarea.note {
+	width: 100%;
+	background-color: black;
+	color: white;
+	margin-top: 1rem !important;
+	font-family: sans-serif;
+	resize: vertical;
+}
